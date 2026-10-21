@@ -1,197 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arquivo Central — Registros d.GD</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arquivo LEVEN</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Marcellus&display=swap">
 <style>
-  :root{
-    --void: #0a0c0b;
-    --panel: #12130f;
-    --fog: #d8e0dc;
-    --fog-soft: #7c847f;
-    --teal: #4fb8a0;
-    --teal-soft: #2e6f62;
-    --warn: #c9a34e;
-    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-    --mono: "SF Mono", "IBM Plex Mono", "JetBrains Mono", Menlo, Consolas, monospace;
-    --sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--void);
-    color:var(--fog);
-    font-family:var(--sans);
-    line-height:1.7;
-  }
-  .seam{
-    position:fixed;
-    top:0; bottom:0;
-    left:24px;
-    width:2px;
-    background:linear-gradient(180deg, var(--teal) 0%, var(--teal-soft) 50%, var(--warn) 100%);
-    opacity:.5;
-    z-index:5;
-  }
-  @media (max-width:640px){ .seam{ left:10px; } }
-
-  main{
-    max-width:760px;
-    margin:0 auto;
-    padding: 14vh 8vw 16vh calc(8vw + 20px);
-  }
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:var(--teal);
-    margin-bottom:14px;
-  }
-  h1{
-    font-family:var(--serif);
-    font-weight:400;
-    font-size:clamp(38px, 7vw, 64px);
-    margin:0 0 8px;
-    letter-spacing:.01em;
-  }
-  .sub{
-    font-family:var(--mono);
-    font-size:13px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--fog-soft);
-    margin:0 0 6vh;
-  }
-  .intro{
-    font-size:17px;
-    color:var(--fog);
-    max-width:600px;
-    margin-bottom:8vh;
-  }
-  .intro p{ margin:0 0 18px; }
-
-  .section-label{
-    font-family:var(--mono);
-    font-size:11.5px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    color:var(--fog-soft);
-    margin: 0 0 20px;
-    padding-bottom:14px;
-    border-bottom:1px solid color-mix(in srgb, var(--fog-soft) 25%, transparent);
-  }
-
-  .entry{
-    display:block;
-    text-decoration:none;
-    color:inherit;
-    padding: 22px 24px;
-    margin-bottom:16px;
-    background:var(--panel);
-    border:1px solid color-mix(in srgb, var(--teal) 35%, transparent);
-    transition: border-color .25s ease, transform .25s ease, background-color .25s ease;
-  }
-  .entry:hover{
-    border-color: var(--teal);
-    background: color-mix(in srgb, var(--teal) 8%, var(--panel));
-    transform: translateX(4px);
-  }
-  .entry-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:16px;
-    margin-bottom:8px;
-  }
-  .entry-title{
-    font-family:var(--serif);
-    font-size:24px;
-    color:var(--fog);
-  }
-  .entry-tag{
-    font-family:var(--mono);
-    font-size:10.5px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal);
-    white-space:nowrap;
-  }
-  .entry-desc{
-    font-size:14.5px;
-    color:var(--fog-soft);
-    margin:0;
-  }
-
-  .entry.locked{
-    cursor:default;
-    opacity:.55;
-    border-color: color-mix(in srgb, var(--fog-soft) 30%, transparent);
-  }
-  .entry.locked:hover{
-    transform:none;
-    background:var(--panel);
-    border-color: color-mix(in srgb, var(--fog-soft) 30%, transparent);
-  }
-  .entry.locked .entry-title{ color:var(--fog-soft); }
-  .entry.locked .entry-tag{ color:var(--warn); }
-
-  footer{
-    margin-top:10vh;
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:.08em;
-    color:var(--fog-soft);
-    text-transform:uppercase;
-    padding-top:20px;
-    border-top:1px solid color-mix(in srgb, var(--fog-soft) 20%, transparent);
-  }
+/* Layout: uma câmara escura com a Balança das Razões no topo; seções em colunas de pedra, e a demonstração do caderno no centro da página. */
+:root{
+  --bg:#0b1517; --surface:#112024; --surface2:#172b30; --fg:#e6e1d3; --muted:#94a29f; --line:#243a3f;
+  --copper:#c9784f; --bronze:#c4a15a; --cyan:#5fd0d6; --green:#7fd48f; --amber:#e5b25d;
+  --display:"Marcellus","Trajan Pro",Georgia,serif; --body:"Alegreya Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#e8eeeb; --surface:#f6f8f5; --surface2:#dbe5e1; --fg:#12262a; --muted:#51635f; --line:#c4d1cd;
+  --copper:#a8532c; --bronze:#85681f; --cyan:#0e7f88; --green:#2f7d3e; --amber:#9a6a12; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#e8eeeb; --surface:#f6f8f5; --surface2:#dbe5e1; --fg:#12262a; --muted:#51635f; --line:#c4d1cd;
+  --copper:#a8532c; --bronze:#85681f; --cyan:#0e7f88; --green:#2f7d3e; --amber:#9a6a12; color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.55;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 60px}
+.wrap{max-width:1040px;margin:0 auto}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin:0 0 10px;font-weight:700}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+h1{font-size:clamp(3.2rem,12vw,6.4rem);letter-spacing:.14em;line-height:1}
+h2{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.15}
+h3{font-size:1.2rem}
+p{margin:0}
+.muted{color:var(--muted)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center;padding-block:56px 40px}
+@media (min-width:860px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
+.hero .tag{font-family:var(--display);font-size:clamp(1.2rem,3vw,1.5rem);color:var(--copper);margin:14px 0 18px}
+.hero p.lead{max-width:44ch;color:var(--fg)}
+.hero svg{width:100%;height:auto;display:block}
+section{padding-block:44px;border-top:1px solid var(--line)}
+section>.head{display:grid;gap:6px;margin-bottom:24px;max-width:60ch}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:6px;min-width:0}
+.term h3{color:var(--bronze)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+@media (min-width:860px){.cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.layers{counter-reset:l;display:grid;gap:14px;padding:0;margin:0;list-style:none}
+.layers li{counter-increment:l;display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:12px;align-items:start}
+.layers li::before{content:counter(l);font-family:var(--display);font-size:1.7rem;color:var(--copper);line-height:1}
+.layers b{display:block;font-weight:700}
+.wings{width:100%;border-collapse:collapse;font-size:1rem}
+.wings th,.wings td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.wings th{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.wings td:first-child{font-family:var(--display);color:var(--bronze);white-space:nowrap}
+.scroll{overflow-x:auto}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(14px,3vw,26px);display:grid;gap:18px}
+.stmts{display:grid;gap:14px}
+.stmt{display:grid;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.stmt:last-child{border-bottom:0;padding-bottom:0}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.92rem;display:inline-flex;gap:7px;align-items:center}
+.opt i{width:9px;height:9px;border-radius:50%;background:var(--cc,var(--muted));display:block}
+.opt[aria-pressed="true"]{border-color:var(--cc,var(--fg));background:var(--surface2)}
+.fb{font-size:.95rem;min-height:1.4em;color:var(--muted)}
+.fb b{color:var(--fg)}
+.fb.ok b{color:var(--green)} .fb.rev b{color:var(--amber)}
+.board{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--surface2)}
+@media (min-width:700px){.board{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.lights{display:flex;gap:18px;flex-wrap:wrap}
+.light{display:grid;gap:4px;justify-items:center;font-size:.8rem;color:var(--muted);min-width:70px}
+.light span{width:34px;height:34px;border-radius:50%;background:var(--cc);opacity:var(--o,.18);box-shadow:0 0 calc(var(--o,.18)*26px) var(--cc);transition:opacity .3s}
+.door{font-family:var(--display);font-size:1.2rem}
+.door small{display:block;font-family:var(--body);font-size:.92rem;color:var(--muted);margin-top:2px}
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.char{border-left:2px solid var(--copper);padding:2px 0 2px 14px;display:grid;gap:3px;min-width:0}
+.char h3{font-size:1.1rem}
+.foot{padding-block:32px 0;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted);display:grid;gap:8px}
+a{color:var(--cyan)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-
-<div class="seam" aria-hidden="true"></div>
-
-<main>
-  <p class="eyebrow">classificação restrita · acesso parcial</p>
-  <h1>Arquivo Central</h1>
-  <p class="sub">registros recuperados · pós Grande Divisão</p>
-
-  <div class="intro">
-    <p>Este arquivo reúne documentos recuperados de diferentes setores após a Grande Divisão — transmissões oficiais, registros administrativos e, quando encontrados, anexos que os próprios setores preferem não catalogar.</p>
-    <p>Cada entrada abaixo é um dossiê independente. Alguns estão completos. Outros ainda aguardam classificação.</p>
-  </div>
-
-  <p class="section-label">setores catalogados</p>
-
-  <a class="entry" href="setor-leven.html">
-    <div class="entry-top">
-      <span class="entry-title">Setor Leven</span>
-      <span class="entry-tag">registro completo</span>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">arquivo · registros de Leven</p>
+      <h1>LEVEN</h1>
+      <p class="tag">A cidade que guardava as razões.</p>
+      <p class="lead">Em Leven, toda decisão era gravada em pedra junto com os motivos de quem decidiu, e qualquer morador podia contestá-la. Hoje só restam os veredictos. Você chega como aprendiz de arquivista para descobrir por que as razões sumiram.</p>
     </div>
-    <p class="entry-desc">Transmissão oficial do canal Leven, ano 3 d.GD — e um anexo não catalogado, encontrado por acaso.</p>
-  </a>
+    <svg id="mech" viewBox="0 0 600 380" role="img" aria-label="Mecanismo circular no chão de uma câmara antiga, ligado por três feixes de luz a três pontos: ciano, verde e âmbar"></svg>
+  </header>
 
-  <div class="entry locked">
-    <div class="entry-top">
-      <span class="entry-title">Setor ???</span>
-      <span class="entry-tag">aguardando classificação</span>
+  <section id="cidade">
+    <div class="head"><p class="eyebrow">a cidade</p><h2>O Registro e o Silêncio</h2>
+      <p class="muted">Os veredictos eram curtos e as razões ocupavam quase toda a pedra. Há gerações, as razões desapareceram, e as ruas se esvaziaram sem que ninguém saiba por quê. Quem acha uma tábua hoje não sabe dizer se a decisão foi justa.</p></div>
+    <div class="terms">
+      <div class="term"><h3>Registro</h3><p>A prática de gravar cada decisão pública com as suas razões.</p></div>
+      <div class="term"><h3>Tábua</h3><p>Pedra com uma decisão e, quando sobrou, as razões que a sustentavam.</p></div>
+      <div class="term"><h3>Eco</h3><p>Fala de um antigo morador marcada na pedra, que se repete a quem se aproxima.</p></div>
+      <div class="term"><h3>Câmara</h3><p>Sala que guarda um caso para investigar.</p></div>
     </div>
-    <p class="entry-desc">Fronteira nordeste. Nenhum documento recuperado até o momento.</p>
-  </div>
+  </section>
 
-  <div class="entry locked">
-    <div class="entry-top">
-      <span class="entry-title">Setor ???</span>
-      <span class="entry-tag">aguardando classificação</span>
+  <section id="misterio">
+    <div class="cols">
+      <div class="head" style="margin:0"><p class="eyebrow">o mistério</p><h2>Três perguntas, cada uma mais aberta</h2>
+        <p class="muted">Nenhuma delas tem uma única resposta certa. O que o jogo observa é como você chega às suas conclusões.</p></div>
+      <ol class="layers">
+        <li><div><b>Onde está Oriel?</b>A mestra entrou na Câmara das Razões e não voltou. Seu caderno traz hipóteses, algumas riscadas.</div></li>
+        <li><div><b>Por que as razões sumiram?</b>Alguém as apagou para evitar contestações, os arquivistas pararam de escrevê-las, ou uma enchente destruiu a parte mais frágil das pedras. Cada ideia tem evidências diferentes.</div></li>
+        <li><div><b>O que a cidade perdeu?</b>Ao ficar só com os resultados, o que mudou na forma como os moradores decidiam e discordavam?</div></li>
+      </ol>
     </div>
-    <p class="entry-desc">Fronteira sul. Nenhum documento recuperado até o momento.</p>
-  </div>
+  </section>
 
-  <footer>arq-central // d.gd // catalogação em andamento</footer>
-</main>
+  <section id="alas">
+    <div class="head"><p class="eyebrow">as alas</p><h2>Onde os casos acontecem</h2>
+      <p class="muted">Depois da chegada, você escolhe a ordem das três alas.</p></div>
+    <div class="scroll"><table class="wings">
+      <thead><tr><th>Lugar</th><th>Caso</th><th>O que você pratica</th></tr></thead>
+      <tbody>
+        <tr><td>Câmara do Limiar</td><td>O Guardião e as três luzes</td><td>Perguntar e separar o que se vê do que se conclui.</td></tr>
+        <tr><td>Ala das Aparências</td><td>Um mural que muda conforme o ponto de vista</td><td>Comparar perspectivas, aparência e realidade.</td></tr>
+        <tr><td>Ala do Pão</td><td>O homem que roubou o pão</td><td>Pesar valores em conflito e, se preciso, suspender o juízo.</td></tr>
+        <tr><td>Ala das Duas Tábuas</td><td>Duas tábuas que se contradizem</td><td>Achar pressupostos e contradições.</td></tr>
+        <tr><td>Câmara das Razões</td><td>O destino de Oriel e o Silêncio</td><td>Montar uma explicação e defendê-la diante de objeções.</td></tr>
+      </tbody></table></div>
+  </section>
 
+  <section id="balanca">
+    <div class="head"><p class="eyebrow">demonstração</p><h2>A Balança das Razões</h2>
+      <p class="muted">Cada afirmação do caso do pão pode ser algo que se viu, algo que se concluiu ou algo que só alguém disse. Escolha uma etiqueta e veja o que a Balança acende.</p></div>
+    <div class="demo">
+      <div class="stmts" id="stmts"></div>
+      <div class="board">
+        <div class="lights" id="lights"></div>
+        <div class="door" id="door">Porta: fechada<small>Etiquete as afirmações para começar.</small></div>
+      </div>
+      <p class="muted" style="font-size:.92rem">Nesta demonstração, algumas etiquetas são mais defensáveis que outras. No jogo, nenhuma conclusão sobre o caso é a certa. O que conta é a qualidade das razões.</p>
+    </div>
+  </section>
+
+  <section id="elenco">
+    <div class="head"><p class="eyebrow">elenco</p><h2>Quem você encontra</h2>
+      <p class="muted">Nomes provisórios. Ninguém ali tem a resposta certa.</p></div>
+    <div class="cast">
+      <div class="char"><h3>O Aprendiz</h3><p class="muted">Você. Nome e voz escolhidos por você.</p></div>
+      <div class="char"><h3>Oriel Quenn</h3><p class="muted">Mestra arquivista desaparecida. Tem uma convicção forte e pode estar errada.</p></div>
+      <div class="char"><h3>O Guardião</h3><p class="muted">Estátua do Limiar. Só responde com perguntas.</p></div>
+      <div class="char"><h3>Dessa Corvale</h3><p class="muted">Agrimensora que vende tábuas a colecionadores. Mente quando lhe convém.</p></div>
+      <div class="char"><h3>Bram Itelo</h3><p class="muted">Vive nas ruínas. Lembra histórias de família, com lacunas.</p></div>
+      <div class="char"><h3>Os Ecos</h3><p class="muted">O padeiro, o homem do pão, a vizinha que viu. Cada um conta o que viu ou o que quis ver.</p></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Proposta de trama em desenvolvimento. Nomes e eventos podem mudar.</p>
+    <p>O atlas de pensadores que acompanha o jogo é o Rio do Pensamento.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  function s(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+  var svg=document.getElementById("mech");
+  var cx=300,cy=265;
+  [[250,70,.9],[190,52,.5],[130,36,.35]].forEach(function(r){
+    s("ellipse",{cx:cx,cy:cy,rx:r[0],ry:r[1],fill:"none",stroke:"var(--bronze)","stroke-width":r[2]*2,opacity:r[2]+.1},svg);
+  });
+  for(var i=0;i<36;i++){
+    var a=i/36*Math.PI*2,x1=cx+Math.cos(a)*250,y1=cy+Math.sin(a)*70,x2=cx+Math.cos(a)*236,y2=cy+Math.sin(a)*65;
+    s("line",{x1:x1,y1:y1,x2:x2,y2:y2,stroke:"var(--copper)","stroke-width":2,opacity:.7},svg);
+  }
+  s("ellipse",{cx:cx,cy:cy,rx:60,ry:17,fill:"var(--surface2)",stroke:"var(--bronze)","stroke-width":2},svg);
+  [[110,110,"var(--cyan)"],[300,62,"var(--green)"],[490,110,"var(--amber)"]].forEach(function(p){
+    s("rect",{x:p[0]-9,y:p[1]+10,width:18,height:130,fill:"var(--surface2)",stroke:"var(--line)"},svg);
+    s("line",{x1:p[0],y1:p[1],x2:cx,y2:cy-6,stroke:p[2],"stroke-width":3,opacity:.75,"stroke-linecap":"round"},svg);
+    s("circle",{cx:p[0],cy:p[1],r:15,fill:p[2],opacity:.22},svg);
+    s("circle",{cx:p[0],cy:p[1],r:8,fill:p[2]},svg);
+  });
+  s("circle",{cx:cx,cy:cy-8,r:6,fill:"var(--fg)"},svg);
+})();
+
+(function(){
+  var T={obs:{n:"Observado",c:"var(--cyan)"},con:{n:"Concluído",c:"var(--green)"},afi:{n:"Afirmado",c:"var(--amber)"},nao:{n:"Ainda não sei",c:"var(--muted)"}};
+  var S=[
+    {t:"A tábua registra que o homem admitiu ter levado o pão.",ok:["obs"],why:"Isso está gravado na pedra e pode ser conferido ali. A tábua não diz por que ele levou."},
+    {t:"A padeira diz que o prejuízo arruinou a semana dela.",ok:["afi"],why:"É a palavra dela. Pode ser verdade, mas nada na câmara a confirma ainda."},
+    {t:"O mural da praça mostra filas diante de celeiros fechados.",ok:["obs"],why:"É uma imagem que você pode ver e descrever. Ela não diz sozinha há quanto tempo isso acontece nem por quê."},
+    {t:"Logo, faltava pão na cidade toda, e não só para esse homem.",ok:["con"],why:"Foi tirado do mural, não visto diretamente. Dá para duvidar: celeiros fechados mostram falta de grão, não necessariamente de pão em cada casa."},
+    {t:"A vizinha jura que viu o homem sair correndo da padaria.",ok:["afi"],why:"É o relato de uma testemunha, ouvido por um Eco. Conta como pista, e precisa ser comparado com outros relatos."},
+    {t:"Punir esse homem evitaria novos roubos.",ok:["afi"],why:"É uma previsão de quem exige a punição. Nada na câmara a sustenta, embora possa ser discutida."}
+  ];
+  var ans=S.map(function(){return null});
+  var box=document.getElementById("stmts");
+  var fbs=[];
+  S.forEach(function(st,i){
+    var d=document.createElement("div");d.className="stmt";
+    var p=document.createElement("p");p.textContent=st.t;d.appendChild(p);
+    var o=document.createElement("div");o.className="opts";
+    var btns=[];
+    Object.keys(T).forEach(function(k){
+      var b=document.createElement("button");b.className="opt";b.type="button";b.setAttribute("aria-pressed","false");
+      b.style.setProperty("--cc",T[k].c);
+      var dot=document.createElement("i");b.appendChild(dot);b.appendChild(document.createTextNode(T[k].n));
+      b.onclick=function(){pick(i,k)};
+      btns.push([k,b]);o.appendChild(b);
+    });
+    d.appendChild(o);
+    var f=document.createElement("p");f.className="fb";f.setAttribute("aria-live","polite");d.appendChild(f);
+    fbs.push({f:f,btns:btns});box.appendChild(d);
+  });
+  var L=document.getElementById("lights");
+  var lamp={};
+  [["obs","Observado"],["con","Concluído"],["afi","Afirmado"]].forEach(function(a){
+    var w=document.createElement("div");w.className="light";
+    var sp=document.createElement("span");sp.style.setProperty("--cc",T[a[0]].c);
+    w.appendChild(sp);w.appendChild(document.createTextNode(a[1]));L.appendChild(w);lamp[a[0]]=sp;
+  });
+  function pick(i,k){
+    ans[i]=k;
+    var st=S[i],f=fbs[i];
+    f.btns.forEach(function(x){x[1].setAttribute("aria-pressed",x[0]===k?"true":"false")});
+    var good=st.ok.indexOf(k)>=0;
+    f.f.className="fb "+(k==="nao"?"":(good?"ok":"rev"));
+    f.f.textContent="";
+    var b=document.createElement("b"),msg;
+    if(k==="nao"){b.textContent="Em suspenso. ";msg="Suspender é razoável quando falta confiança no que se viu. Para comparar: "+st.why}
+    else if(good){b.textContent="Coerente. ";msg=st.why}
+    else{b.textContent="Vale rever. ";msg=st.why}
+    f.f.appendChild(b);f.f.appendChild(document.createTextNode(msg));
+    update();
+  }
+  function update(){
+    var c={obs:0,con:0,afi:0},bad=0,susp=0,done=0,tot={obs:0,con:0,afi:0};
+    S.forEach(function(x){tot[x.ok[0]]++});
+    ans.forEach(function(k,i){
+      if(!k)return;
+      done++;
+      if(k==="nao"){susp++;return}
+      if(S[i].ok.indexOf(k)<0){bad++;return}
+      c[k]++;
+    });
+    ["obs","con","afi"].forEach(function(k){lamp[k].style.setProperty("--o",(0.18+0.82*c[k]/tot[k]).toFixed(2))});
+    var d=document.getElementById("door"),t,sub;
+    if(!done){t="fechada";sub="Etiquete as afirmações para começar."}
+    else if(bad){t="fechada";sub="Algumas ligações não se sustentam ("+bad+"). Releia as notas acima."}
+    else if(done<S.length){t="entreaberta";sub="Ainda faltam "+(S.length-done)+" afirmações."}
+    else if(susp){t="entreaberta";sub="Há afirmações em suspenso. A porta só abre por completo quando elas forem examinadas."}
+    else{t="aberta";sub="Todas as ligações se sustentam entre si."}
+    d.firstChild.nodeValue="Porta: "+t;
+    d.querySelector("small").textContent=sub;
+  }
+})();
+</script>
 </body>
 </html>
