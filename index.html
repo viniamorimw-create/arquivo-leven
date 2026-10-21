@@ -75,6 +75,20 @@ section>.head{display:grid;gap:6px;margin-bottom:24px;max-width:60ch}
 .char{border-left:2px solid var(--copper);padding:2px 0 2px 14px;display:grid;gap:3px;min-width:0}
 .char h3{font-size:1.1rem}
 .foot{padding-block:32px 0;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted);display:grid;gap:8px}
+.par{display:grid;gap:0;list-style:none;padding:0;margin:0}
+.par li{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:18px 0;border-bottom:1px solid var(--line)}
+.par li:first-child{padding-top:0}
+@media (min-width:760px){.par li{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}}
+.par .n{font-family:var(--display);color:var(--bronze);font-size:1.15rem;grid-column:1/-1}
+.par .real,.par .fic{display:grid;gap:3px;min-width:0}
+.par .tagline{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.par .fic{border-left:2px solid var(--copper);padding-left:14px}
+.par .fic .tagline{color:var(--copper)}
+.stones{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:6px}
+@media (min-width:700px){.stones{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.stone{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:6px}
+.stone q{font-family:var(--display);font-size:1.15rem;quotes:none;display:block}
+.stone small{color:var(--muted);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
 a{color:var(--cyan)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -86,10 +100,38 @@ a{color:var(--cyan)}
       <p class="eyebrow">arquivo · registros de Leven</p>
       <h1>LEVEN</h1>
       <p class="tag">A cidade que guardava as razões.</p>
-      <p class="lead">Em Leven, toda decisão era gravada em pedra junto com os motivos de quem decidiu, e qualquer morador podia contestá-la. Hoje só restam os veredictos. Você chega como aprendiz de arquivista para descobrir por que as razões sumiram.</p>
+      <p class="lead">Em Leven, toda decisão era gravada em pedra junto com os motivos de quem decidiu, e qualquer morador podia contestá-la. Hoje só restam os veredictos. Você chega como aprendiz de arquivista para descobrir por que as razões sumiram. A história começa onde a filosofia começou, com o primeiro porquê, e avança no tempo até o Silêncio.</p>
     </div>
     <svg id="mech" viewBox="0 0 600 380" role="img" aria-label="Mecanismo circular no chão de uma câmara antiga, ligado por três feixes de luz a três pontos: ciano, verde e âmbar"></svg>
   </header>
+
+  <section id="origens">
+    <div class="head"><p class="eyebrow">as origens</p><h2>Duas linhas paralelas</h2>
+      <p class="muted">Leven viveu, à sua maneira, a passagem do mito à razão que a filosofia viveu. À esquerda, a história real. À direita, a ficção. Elas rimam, mas ninguém em Leven conhece os pensadores reais, e o jogo não diz que um influenciou o outro.</p></div>
+    <ol class="par">
+      <li><span class="n">1. A era do mito</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>Antes do século VI a.C., o mundo é explicado por deuses e histórias, como em Homero e Hesíodo. A explicação vale por quem a conta.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>A Era dos Decretos.</b> Sacerdotes das águas leem sinais no Rio e anunciam o que “o Rio quer”. Ninguém pergunta por quê.</p></div></li>
+      <li><span class="n">2. O primeiro porquê</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>No século VI a.C., em Mileto, Tales, Anaximandro e Anaxímenes explicam a natureza sem recorrer a deuses e discordam entre si. Costuma-se apontar essa troca de críticas como o início da tradição crítica.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>A Primeira Tábua.</b> A barqueira Neru exige o motivo de uma ordem que a prejudica e o grava ao lado do decreto. Outros o contestam. Nasce a ideia de que razões podem ser examinadas.</p></div></li>
+      <li><span class="n">3. Discussão e paradoxo</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>Heráclito diz que tudo muda. Parmênides diz que a mudança é ilusão. Zenão propõe paradoxos. A razão e os sentidos parecem se contradizer.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>A Disputa das Aparências.</b> Duas contestações bem argumentadas chegam a conclusões opostas sobre a mesma enchente. Em quem confiar, nos olhos ou no argumento?</p></div></li>
+      <li><span class="n">4. Sofistas e Sócrates</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>No século V a.C., os sofistas ensinam a persuadir. Sócrates, em vez de responder, pergunta, e afirma saber que nada sabe.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>Os Oradores e os Perguntadores.</b> Oradores ganham casos pelo talento de falar. Os Perguntadores interrogam as razões de todos. Deles vem a estátua do Guardião.</p></div></li>
+      <li><span class="n">5. Sistemas e lógica</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>No século IV a.C., Platão funda a Academia e Aristóteles organiza a lógica e as ciências em sistema.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>A Balança das Razões.</b> Os arquivistas separam o visto, o concluído e o afirmado, e constroem o mecanismo das três luzes.</p></div></li>
+      <li><span class="n">6. Escolas e ceticismo</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>Estoicos, epicuristas e céticos disputam espaço. Os céticos defendem suspender o juízo quando faltam razões.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>O Registro maduro.</b> As Câmaras se multiplicam por assunto. Aceita-se que certas questões fiquem em aberto, e isso é gravado.</p></div></li>
+      <li><span class="n">7. Perda e transmissão</span>
+        <div class="real"><span class="tagline">Filosofia real</span><p>Da filosofia antiga sobrou pouco. Dos pré-socráticos temos fragmentos e o que outros contaram. Muitas vezes sabemos a conclusão, e não o argumento.</p></div>
+        <div class="fic"><span class="tagline">Em Leven</span><p><b>A Pressa, a Escassez, a Cheia e o Silêncio.</b> Sobram os veredictos e se perdem as razões.</p></div></li>
+    </ol>
+  </section>
 
   <section id="cidade">
     <div class="head"><p class="eyebrow">a cidade</p><h2>O Registro e o Silêncio</h2>
@@ -100,6 +142,12 @@ a{color:var(--cyan)}
       <div class="term"><h3>Eco</h3><p>Fala de um antigo morador marcada na pedra, que se repete a quem se aproxima.</p></div>
       <div class="term"><h3>Câmara</h3><p>Sala que guarda um caso para investigar.</p></div>
     </div>
+    <div class="head" style="margin:32px 0 0"><h3>O primeiro minuto de jogo</h3>
+      <p class="muted">Na primeira sala, antes de qualquer explicação, duas pedras lado a lado na parede. O Guardião pergunta: “O que a segunda pedra tem que a primeira não tem?”. A resposta é a primeira lição do jogo e a ideia que Leven inventou.</p></div>
+    <div class="stones">
+      <div class="stone"><small>Pedra mais antiga</small><q>O Rio quer a ponte no leste.</q></div>
+      <div class="stone"><small>Gravada depois</small><q>A ponte no leste, porque o barro da margem oeste cede.</q></div>
+    </div>
   </section>
 
   <section id="misterio">
@@ -108,23 +156,25 @@ a{color:var(--cyan)}
         <p class="muted">Nenhuma delas tem uma única resposta certa. O que o jogo observa é como você chega às suas conclusões.</p></div>
       <ol class="layers">
         <li><div><b>Onde está Oriel?</b>A mestra entrou na Câmara das Razões e não voltou. Seu caderno traz hipóteses, algumas riscadas.</div></li>
-        <li><div><b>Por que as razões sumiram?</b>Alguém as apagou para evitar contestações, os arquivistas pararam de escrevê-las, ou uma enchente destruiu a parte mais frágil das pedras. Cada ideia tem evidências diferentes.</div></li>
+        <li><div><b>Por que as razões sumiram?</b>Alguém as apagou para evitar contestações, os arquivistas pararam de escrevê-las, ou uma enchente destruiu a parte mais frágil das pedras. As três coisas aconteceram, em épocas diferentes, e o jogo pede que você diga quanto cada uma pesou.</div></li>
         <li><div><b>O que a cidade perdeu?</b>Ao ficar só com os resultados, o que mudou na forma como os moradores decidiam e discordavam?</div></li>
       </ol>
     </div>
   </section>
 
   <section id="alas">
-    <div class="head"><p class="eyebrow">as alas</p><h2>Onde os casos acontecem</h2>
-      <p class="muted">Depois da chegada, você escolhe a ordem das três alas.</p></div>
+    <div class="head"><p class="eyebrow">o percurso</p><h2>Um ato para cada etapa</h2>
+      <p class="muted">O jogo segue a ordem da história: você entra pelas tábuas mais antigas e sobe no tempo até o Silêncio. A ordem das alas é fixa, e cada uma treina uma habilidade de pensar. A cada ato, o atlas liberta os pensadores reais daquela etapa.</p></div>
     <div class="scroll"><table class="wings">
-      <thead><tr><th>Lugar</th><th>Caso</th><th>O que você pratica</th></tr></thead>
+      <thead><tr><th>Parte</th><th>Lugar</th><th>Etapa da filosofia</th><th>Você aprende</th></tr></thead>
       <tbody>
-        <tr><td>Câmara do Limiar</td><td>O Guardião e as três luzes</td><td>Perguntar e separar o que se vê do que se conclui.</td></tr>
-        <tr><td>Ala das Aparências</td><td>Um mural que muda conforme o ponto de vista</td><td>Comparar perspectivas, aparência e realidade.</td></tr>
-        <tr><td>Ala do Pão</td><td>O homem que roubou o pão</td><td>Pesar valores em conflito e, se preciso, suspender o juízo.</td></tr>
-        <tr><td>Ala das Duas Tábuas</td><td>Duas tábuas que se contradizem</td><td>Achar pressupostos e contradições.</td></tr>
-        <tr><td>Câmara das Razões</td><td>O destino de Oriel e o Silêncio</td><td>Montar uma explicação e defendê-la diante de objeções.</td></tr>
+        <tr><td>Prólogo</td><td>O Limiar e a Balança</td><td>Introdução ao método</td><td>Separar o visto, o concluído e o afirmado.</td></tr>
+        <tr><td>Ato I</td><td>Câmara dos Decretos</td><td>Do mito ao primeiro porquê</td><td>Pedir razões. Distinguir ordem de explicação.</td></tr>
+        <tr><td>Ato II</td><td>Ala das Aparências</td><td>Heráclito, Parmênides, Zenão</td><td>Comparar perspectivas. Aparência e realidade.</td></tr>
+        <tr><td>Ato III</td><td>Ala do Orador</td><td>Sofistas e Sócrates</td><td>Reconhecer persuasão sem solidez. Fazer boas perguntas.</td></tr>
+        <tr><td>Ato IV</td><td>Ala das Duas Tábuas</td><td>Platão, Aristóteles e a lógica</td><td>Achar contradições e pressupostos escondidos.</td></tr>
+        <tr><td>Ato V</td><td>Ala do Pão</td><td>Escolas helenísticas e ceticismo</td><td>Pesar valores em conflito. Suspender o juízo quando faltam razões.</td></tr>
+        <tr><td>Ato VI</td><td>Câmara das Razões</td><td>Perda e transmissão</td><td>Reconstruir o passado a partir de vestígios e defender uma conclusão.</td></tr>
       </tbody></table></div>
   </section>
 
@@ -147,15 +197,15 @@ a{color:var(--cyan)}
     <div class="cast">
       <div class="char"><h3>O Aprendiz</h3><p class="muted">Você. Nome e voz escolhidos por você.</p></div>
       <div class="char"><h3>Oriel Quenn</h3><p class="muted">Mestra arquivista desaparecida. Tem uma convicção forte e pode estar errada.</p></div>
-      <div class="char"><h3>O Guardião</h3><p class="muted">Estátua do Limiar. Só responde com perguntas.</p></div>
+      <div class="char"><h3>O Guardião</h3><p class="muted">Estátua herdada dos Perguntadores. Só responde com perguntas.</p></div>
       <div class="char"><h3>Dessa Corvale</h3><p class="muted">Agrimensora que vende tábuas a colecionadores. Mente quando lhe convém.</p></div>
       <div class="char"><h3>Bram Itelo</h3><p class="muted">Vive nas ruínas. Lembra histórias de família, com lacunas.</p></div>
-      <div class="char"><h3>Os Ecos</h3><p class="muted">O padeiro, o homem do pão, a vizinha que viu. Cada um conta o que viu ou o que quis ver.</p></div>
+      <div class="char"><h3>Os Ecos</h3><p class="muted">Neru, o orador, o homem do pão, a vizinha que viu. Cada um conta o que viu ou o que quis ver.</p></div>
     </div>
   </section>
 
   <footer class="foot">
-    <p>Proposta de trama em desenvolvimento. Nomes e eventos podem mudar.</p>
+    <p>Proposta de trama em desenvolvimento. Nomes e eventos podem mudar. Os paralelos com a filosofia real são simplificados de propósito.</p>
     <p>O atlas de pensadores que acompanha o jogo é o Rio do Pensamento.</p>
   </footer>
 </div>
